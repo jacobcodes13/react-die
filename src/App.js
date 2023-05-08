@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import DiceBox from "./components/DiceBox"
+import React from "react"
 
 function App() {
+  const [numbers, setNumbers] = React.useState([null, null, null, null, null])
+
+  
+  function rollDie() {
+    function randomRoll() {
+      return Math.floor((Math.random() * 6) + 1)
+    }
+
+    // let rollOne = randomRoll()
+    // let rollTwo = randomRoll()
+    // let rollThree = randomRoll()
+    // let rollFour = randomRoll()
+    // let rollFive = randomRoll()
+    
+    // console.log([randomRoll(), randomRoll(), randomRoll(), randomRoll(), randomRoll()])
+    setNumbers([randomRoll(), randomRoll(), randomRoll(), randomRoll(), randomRoll()])
+    // console.log(numbers)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DiceBox 
+        numbers={numbers}
+      />
+      <div className="container">
+        <button onClick={rollDie} className="button">Click To Roll</button>
+      </div>
     </div>
   );
 }
